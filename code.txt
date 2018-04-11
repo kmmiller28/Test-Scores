@@ -1,0 +1,76 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+int main()
+{
+	double *score = nullptr,			// Pointer variable to allocate array
+		total = 0.0,				// Total of all grades
+		average,				// Average of all grades		
+		size = 0.0;
+	int numOfscores,				// The number of scores to be processed
+		count;					// Loop counter
+
+
+	// Get total amount of test scores
+	cout << "How many test scores will you enter today? ";
+	cin >> numOfscores;
+
+	// Allocate array 
+	score = new double[numOfscores];
+
+
+	// Get the scores for each test
+	int temp;
+	int i = 1;
+	cout << "Please enter each test score.\n";
+	for (int count = 0; count < numOfscores; count++)
+	{
+		cout << "Test score " << (count + 1) << ": ";
+		cin >> score[count];
+		
+	}
+	for (count = 1; count < (numOfscores - 1); count++)
+	{
+		for (int i = 0; i < numOfscores - 1; i++);
+		{
+			if (score[i] > score[i + 1])
+			{
+				temp = score[i];
+				score[i] = score[i + 1];
+				score[i + 1] = temp;
+			}
+		}
+	}
+
+	for (int j = 0; j < numOfscores; j++)
+	{
+		cout << " " << score[j] << "\n";
+	}
+	
+	
+	
+	// Calculate total test scores
+	for (count = 0; count < numOfscores; count++)
+	{
+		total += score[count];
+	}
+		
+	// Calculate average of test scores	
+	average = total / numOfscores;
+
+	// Do not accept negative numbers for test scores!
+	
+
+
+	// Display the results
+	cout << fixed << showpoint << setprecision(2);
+	cout << "\n\nTotal Scores: " << total << endl;
+	cout << "Average Scores: " << average << endl;
+
+
+
+	system("pause");
+	return 0;
+}
